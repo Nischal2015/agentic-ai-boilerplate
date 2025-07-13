@@ -21,7 +21,7 @@ powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | ie
 pip install uv
 ```
 
-### 2. Clone the repository and get inside of it.
+### 3. Clone the repository and get inside of it.
 ```bash
 git clone https://github.com/Nischal2015/agentic-ai-boilerplate
 cd agentic-ai-boilerplate
@@ -29,9 +29,32 @@ cd agentic-ai-boilerplate
 
 ### 3. Lock and install dependencies
 
+#### Using `uv` (recommended)
 ```bash
+# Using uv (recommended)
 uv lock
 uv sync
+```
+
+#### Using `pip` (if uv is not working)
+```bash
+# Create virtual environment
+# For Linux/MacOS
+python3 -m venv .venv
+
+# For Windows
+python -m venv .venv
+
+# Activate virtual environment
+# For Linux/MacOS
+source ./venv/bin/activate
+
+# For Windows
+.\venv\Scripts\activate
+
+# Install the packages
+pip install --upgrade pip setuptools wheel
+pip install -r requirements.txt
 ```
 
 ---
@@ -59,6 +82,16 @@ You can modify inputs or logic in:
 - Create your own tools by subclassing `BaseTool` (see `MyCustomTool`)
 
 ---
+
+## Running the project
+```bash
+# Make sure virtual environment is activated
+# For Linux/MacOS
+python3 main.py
+
+# For Windows
+python main.py
+```
 
 ## 🙋‍♀️ Need Help?
 

@@ -7,8 +7,8 @@ from crewai_tools import SerperDevTool, ScrapeWebsiteTool
 @CrewBase
 class LinkedPostGeneratorCrew:
 
-    agents = list[BaseAgent]
-    tasks = list[Task]
+    agents: list[BaseAgent]
+    tasks: list[Task]
 
     agents_config = "config/agents.yaml"
     tasks_config = "config/tasks.yaml"
@@ -16,55 +16,59 @@ class LinkedPostGeneratorCrew:
     @agent
     def course_summarizer_agent(self) -> Agent:
         return Agent(
-            config=self.agents_config["course_summarizer_agent"],
+            config=self.agents_config["course_summarizer_agent"],  # type: ignore[index]
             tools=[SerperDevTool(), ScrapeWebsiteTool()],
         )
 
     @agent
     def course_summary_tone_optimizer_agent(self) -> Agent:
         return Agent(
-            config=self.agents_config["course_summary_tone_optimizer_agent"],
+            config=self.agents_config["course_summary_tone_optimizer_agent"],  # type: ignore[index]
         )
 
     @agent
     def hashtag_generator_agent(self) -> Agent:
         return Agent(
-            config=self.agents_config["hashtag_generator_agent"],
+            config=self.agents_config["hashtag_generator_agent"],  # type: ignore[index]
         )
 
     @agent
     def final_composer_agent(self) -> Agent:
         return Agent(
-            config=self.agents_config["final_composer_agent"],
+            config=self.agents_config["final_composer_agent"],  # type: ignore[index]
         )
 
     @task
     def course_summarizer_task(self) -> Task:
         return Task(
-            config=self.tasks_config["course_summarizer_task"],
+            config=self.tasks_config["course_summarizer_task"],  # type: ignore[index]
         )
 
     @task
     def course_summary_tone_optimizer_task(self) -> Task:
         return Task(
-            config=self.tasks_config["course_summary_tone_optimizer_task"],
+            config=self.tasks_config["course_summary_tone_optimizer_task"],  # type: ignore[index]
         )
 
     @task
     def hashtag_generator_task(self) -> Task:
         return Task(
-            config=self.tasks_config["hashtag_generator_task"],
+            config=self.tasks_config["hashtag_generator_task"],  # type: ignore[index]
         )
 
     @task
     def final_composer_task(self) -> Task:
         return Task(
-            config=self.tasks_config["final_composer_task"],
+            config=self.tasks_config["final_composer_task"],  # type: ignore[index]
         )
 
     @crew
     def crew(self) -> Crew:
-        return Crew(agents=self.agents, tasks=self.tasks, verbose=True)
+        return Crew(
+            agents=self.agents,
+            tasks=self.tasks,
+            verbose=True,
+        )
 
 
 if __name__ == "__main__":
