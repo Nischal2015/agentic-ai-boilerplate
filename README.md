@@ -21,7 +21,13 @@ powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | ie
 pip install uv
 ```
 
-### 2. Lock and install dependencies
+### 2. Clone the repository and get inside of it.
+```bash
+git clone https://github.com/Nischal2015/agentic-ai-boilerplate
+cd agentic-ai-boilerplate
+```
+
+### 3. Lock and install dependencies
 
 ```bash
 uv lock
